@@ -2,17 +2,20 @@ public abstract class Zone extends Cell {
     protected int level;
     protected int demand;
     protected int output;
-    protected boolean hasSecurity = false;
-    protected boolean hasHealth = false;
-    protected boolean hasEducation = false;
+    protected boolean hasSecurity ;
+    protected boolean hasHealth ;
+    protected boolean hasEducation;
+    protected boolean hasWater;
+    protected boolean hasElectricity;
+    protected boolean hasInternet;
 
     public abstract void levelUp();
     public abstract void levelDown();
 
+
     public void setHasSecurity(boolean hasSecurity) {
         this.hasSecurity = hasSecurity;
     }
-
     public boolean getHasSecurity() {
         return hasSecurity;
     }
@@ -20,7 +23,7 @@ public abstract class Zone extends Cell {
     public void setHasHealth(boolean hasHealth) {
         this.hasHealth = hasHealth;
     }
-    public boolean isHasHealth(){
+    public boolean getHasHealth(){
         return hasHealth;
     }
 
@@ -31,14 +34,37 @@ public abstract class Zone extends Cell {
         return hasEducation;
     }
 
+    public void setHasWater(boolean hasWater) {
+        this.hasWater = hasWater;
+    }
+    public boolean getHasWater() {
+        return hasWater;
+    }
+
+    public void setHasElectricity(boolean hasElectricity) {
+        this.hasElectricity = hasElectricity;
+    }
+    public boolean getHasElectricity() {
+        return hasElectricity;
+    }
+
+    public void setHasInternet(boolean hasInternet) {
+        this.hasInternet = hasInternet;
+    }
+    public boolean getHasInternet() {
+        return hasInternet;
+    }
 
     public Zone(int n, int m) {
-      super(n,m);
+        super(n,m);
         this.level = 0;
         this.demand = 0;
         this.output = 0;
         this.hasSecurity = false;
         this.hasHealth = false;
         this.hasEducation = false;
+        this.hasWater = false;
+        this.hasElectricity = false;
+        this.hasInternet = false;
     }
 }

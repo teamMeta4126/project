@@ -1,19 +1,19 @@
 public class Algorithm1 {
     public void provideServices(Cell[][] cityMap){
         int mapRows=cityMap.length;
-        int mapCols=cityMap[0].length;
+        int mapColumns=cityMap[0].length;
 
 
         //Searching for the service providers
         for (int i=0;i<mapRows;i++){
-            for(int j=0;j<mapCols;j++){
+            for(int j=0;j<mapColumns;j++){
                 if(cityMap[i][j] instanceof Service){
                     Service service=(Service) cityMap[i][j];
 
 
                     //Searching for the zones that will receive the service
                     for(int k=0;k<mapRows;k++){
-                        for (int l=0;l<mapCols;l++){
+                        for (int l=0;l<mapColumns;l++){
                             if (cityMap[k][l] instanceof Zone){
                                 Zone zone=(Zone)cityMap[k][l];
 
