@@ -5,4 +5,9 @@ public abstract class Service extends Cell {
         super(n, m);
 
     }
+
+    public int getRadius() {
+        return radius;
+    }
 }
+

@@ -5,4 +5,7 @@ public abstract class UtilityProvider extends Cell{
         super(n,m);
 
     }
+    public int getCapacity() {
+        return capacity;
+    }
 }
