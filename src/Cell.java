@@ -8,6 +8,14 @@ public abstract class Cell {
         this.m = m;
     }
 
+    public int getRow() {
+        return n;
+    }
+
+    public int getColumn() {
+        return m;
+    }
+
     public String getBuildingName() {
         switch (this.symbol) {
             case 'H':
