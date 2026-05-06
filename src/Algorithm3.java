@@ -4,7 +4,7 @@ public class Algorithm3 {
                                     int totalPopulation,
                                     int totalGoods,
                                     int totalLifestyle) {
-        
+
         if (cityMap == null || cityMap.length == 0) {
             throw new SE116ConfigurationException("ERROR: City map is null or empty. Resource distribution cannot proceed.");
         }
@@ -47,17 +47,26 @@ public class Algorithm3 {
 
                     if(zone instanceof Industrial || zone instanceof Commercial){
                         zone.setPopulation(populationPerReceiver);
-                        printResource(zone, "population", populationPerReceiver);
+
+                        if(populationPerReceiver > 0){
+                            printResource(zone, "population", populationPerReceiver);
+                        }
                     }
 
                     if(zone instanceof Commercial){
                         zone.setGoods(goodsPerCommercial);
-                        printResource(zone, "goods", goodsPerCommercial);
+
+                        if(goodsPerCommercial > 0){
+                            printResource(zone, "goods", goodsPerCommercial);
+                        }
                     }
 
                     if(zone instanceof Housing){
                         zone.setLifestyle(lifestylePerHouse);
-                        printResource(zone, "lifestyle", lifestylePerHouse);
+
+                        if(lifestylePerHouse > 0){
+                            printResource(zone, "lifestyle", lifestylePerHouse);
+                        }
                     }
                 }
             }
