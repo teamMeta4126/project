@@ -26,20 +26,25 @@ public class CityReader {
                 }
             }
         } catch (FileNotFoundException e) {
-            System.out.println("ERROR: " + this.fileName + " the file HAS NOT FOUND!");
-            return;
+            throw new SE116ConfigurationException("ERROR: The file ("+ this.fileName+") has not found.",e);
         } finally {
             if (sc != null) sc.close();
         }
 
         if (lines.isEmpty()) {
-            System.out.println("ERROR : file is EMPTY.");
-            return;
+            throw new SE116ConfigurationException("ERROR : file is EMPTY.");
+        }
+
+        int maxColumns=0;
+        for(String rowLine: lines){
+            if(rowLine.length()>maxColumns){
+                maxColumns=rowLine.length();
+            }
         }
 
         // updating the fields of the object which we gave initial value as 0
         this.rows = lines.size();
-        this.cols = lines.get(0).length();
+        this.cols = maxColumns;
         this.mapGrid = new Cell[rows][cols];
 
         // putting objects to the 2d array
@@ -56,40 +61,42 @@ public class CityReader {
 
                 switch (c){
                     case 'H':
-                        this.mapGrid[i][j] = new Housing();
+                        this.mapGrid[i][j] = new Housing(i,j);
                         break;
                     case 'P':
-                        this.mapGrid[i][j] = new PowerPlant();
+                        this.mapGrid[i][j] = new PowerPlant(i,j);
                         break;
                     case 'R':
-                        this.mapGrid[i][j] = new Road();
+                        this.mapGrid[i][j] = new Road(i,j);
                         break;
                     case 'C':
-                        this.mapGrid[i][j] = new Commercial();
+                        this.mapGrid[i][j] = new Commercial(i,j);
                         break;
                     case 'I':
-                        this.mapGrid[i][j]=new Industrial();
+                        this.mapGrid[i][j]=new Industrial(i,j);
                         break;
                     case 'W':
-                        this.mapGrid[i][j]= new WaterStation();
+                        this.mapGrid[i][j]= new WaterPumping(i,j);
                         break;
                     case 'F':
-                        this.mapGrid[i][j]=new PoliceStation();
+                        this.mapGrid[i][j]=new PoliceStation(i,j);
                         break;
                     case 'T' :
-                        this.mapGrid[i][j]=new InternetHub();
+                        this.mapGrid[i][j]=new InternetHub(i,j);
                         break;
                     case 'D':
-                        this.mapGrid[i][j]= new Hospital();
+                        this.mapGrid[i][j]= new Hospital(i,j);
                         break;
                     case 'S':
-                        this.mapGrid[i][j] = new  School();
+                        this.mapGrid[i][j] = new  School(i,j);
+                        break;
+                    case 'E':
+                        this.mapGrid[i][j] = new Empty(i, j);
                         break;
 
                     // other foreign letters
                     default:
-                        this.mapGrid[i][j] = new Empty();
-                        break;
+                        throw new SE116ConfigurationException("ERROR: Invalid character: "+ c);
                 }
             }
         }
@@ -97,15 +104,14 @@ public class CityReader {
 
 
 
-        public Cell[][] getMapGrid () {
-            return mapGrid;
-        }
-        public int getRows (){
-            return rows;
-        }
+    public Cell[][] getMapGrid () {
+        return mapGrid;
+    }
+    public int getRows (){
+        return rows;
+    }
 
-        public int getCols (){
-            return cols;
-        }
+    public int getCols (){
+        return cols;
+    }
 }
-
