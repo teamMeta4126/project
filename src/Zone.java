@@ -159,4 +159,7 @@ public abstract class Zone extends Cell {
         this.population=0;
         this.goods=0;
     }
+ protected void printOutput(int generatedOutput, String resource){
+        System.out.println(getBuildingName()+" at ("+getRow()+","+getColumn()+") generated "+generatedOutput+" "+resource);
+    }    
 }
