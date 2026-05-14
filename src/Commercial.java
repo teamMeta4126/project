@@ -41,5 +41,34 @@ public class Commercial extends Zone {
             System.out.println(getBuildingName() + " at (" + getRow() + "," + getColumn() + ") levels down from 1 to 0");
         }
     }
+    @Override
+    public void controlOutput(){
+        int m=getElectricity();
+        if(getInternet()<m) {
+            m = getInternet();
+        }
+        if(getWater()<m){
+            m=getWater();
+        }
+        int generatedOutput=0;
+        if(level==1){
+            generatedOutput=m;
+        } else if (level==2) {
+            generatedOutput=m*2;
+        }else if(level==3){
+            int minResource=getPopulation();
+            if(getGoods()<minResource){
+                minResource=getGoods();
+            }
+            generatedOutput=(m*2)+minResource;
+        }
+        this.output=generatedOutput;
+        if(generatedOutput>0){
+            this.demand=output;
+            printOutput(generatedOutput,"lifestyle");
+        }else{
+            this.demand=1;
+        }
+    }
 }
 
