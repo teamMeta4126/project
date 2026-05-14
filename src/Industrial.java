@@ -41,4 +41,32 @@ public class Industrial extends Zone{
             System.out.println(getBuildingName() + " at (" + getRow() + "," + getColumn() + ") levels down from 1 to 0");
         }
     }
+
+        @Override
+    public void controlOutput(){
+        int m;
+        if(getElectricity()<getWater()){
+            m=getElectricity();
+        }else {
+            m=getWater();
+        }
+        int generatedOutput=0;
+
+        if(level==1){
+            generatedOutput=m;
+        }
+        else if(level==2){
+            generatedOutput=m*2;
+        }
+        else if(level==3){
+            generatedOutput=(m*2)+getPopulation();
+        }
+        this.output=generatedOutput;
+        if(generatedOutput>0){
+            this.demand=output;
+            printOutput(generatedOutput, "goods");
+        }else{
+            this.demand=1;
+        }
+    }
 }
