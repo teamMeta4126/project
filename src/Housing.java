@@ -37,4 +37,29 @@ public class Housing extends Zone {
             System.out.println(getBuildingName() + " at (" + getRow() + "," + getColumn() + ") levels down from 2 to 1");
         }
     }
+       @Override
+    public void controlOutput(){
+        int m=getElectricity();
+        if(getInternet()<m) {
+            m = getInternet();
+        }
+        if(getWater()<m){
+            m=getWater();
+            }
+        int generatedOutput=0;
+        if(level==1){
+            generatedOutput=m;
+        } else if (level==2) {
+            generatedOutput=m*2;
+        }else if(level==3){
+            generatedOutput=(m*2)+getLifestyle();
+        }
+       this.output=generatedOutput;
+        if(generatedOutput>0){
+            this.demand=output;
+            printOutput(generatedOutput,"population");
+        }else{
+            this.demand=1;
+        }
+    }
 }
