@@ -29,9 +29,6 @@ public abstract class Zone extends Cell {
         this.setElectricity(0);
         this.setInternet(0);
 
-        this.setLifestyle(0);
-        this.setPopulation(0);
-        this.setGoods(0);
     }
 
     public int getDemand() {
