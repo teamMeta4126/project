@@ -1,3 +1,8 @@
+package engine;
+
+import core.Cell;
+import zones.*;
+
 public class Algorithm3 {
 
     public void distributeResources(Cell[][] cityMap,
