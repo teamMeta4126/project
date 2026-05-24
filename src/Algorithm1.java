@@ -23,14 +23,17 @@ public class Algorithm1 {
                                 //Providing the service to the zone depending on the radius
                                 if(distance<=service.getRadius()){
 
-                                    if(service instanceof Hospital){
+                                    if(service instanceof Hospital && zone.getHasHealth()==false){
                                         zone.setHasHealth(true);
+                                        printServiceOutput(zone, "health service");
                                     }
-                                    else if(service instanceof PoliceStation){
+                                    else if(service instanceof PoliceStation && zone.getHasSecurity()==false){
                                         zone.setHasSecurity(true);
+                                        printServiceOutput(zone, "security service");
                                     }
-                                    else if(service instanceof School){
+                                    else if(service instanceof School && zone.getHasEducation()==false){
                                         zone.setHasEducation(true);
+                                        printServiceOutput(zone, "education service");
                                     }
                                 }
                             }
@@ -40,5 +43,9 @@ public class Algorithm1 {
             }
         }
 
+    }
+    // This helper method is for printing the service distribution output for Tick-1
+    private void printServiceOutput(Zone zone, String serviceName) {
+        System.out.println(zone.getBuildingName()+" at (" +zone.getRow()+","+ zone.getColumn()+") received " +serviceName);
     }
 }
