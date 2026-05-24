@@ -1,3 +1,5 @@
+package zones;
+
 public class Industrial extends Zone{
 
     public Industrial(int n,int m){
