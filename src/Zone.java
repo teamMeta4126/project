@@ -18,6 +18,12 @@ public abstract class Zone extends Cell {
 
     public abstract void levelUp();
     public abstract void levelDown();
+
+    public void controlLevel(){
+        this.levelDown();
+        this.levelUp();
+    }  
+    
     public abstract void controlOutput();
 
     public void resetForNextTick(){
