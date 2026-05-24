@@ -1,3 +1,5 @@
+package utilities;
+
 public class InternetHub extends UtilityProvider{
     public InternetHub(int n, int m) {
         super(n,m);
