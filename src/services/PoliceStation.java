@@ -1,3 +1,5 @@
+package services;
+
 public class PoliceStation extends Service{
 
     public PoliceStation(int n,int m) {
