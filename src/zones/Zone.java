@@ -1,3 +1,7 @@
+package zones;
+
+import core.Cell;
+
 public abstract class Zone extends Cell {
     protected int level;
     protected int demand;
