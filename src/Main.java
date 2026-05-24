@@ -68,7 +68,8 @@ public class Main {
             algorithm3.distributeResources(cityMap, totalPopulation, totalGoods, totalLifestyle);
 
             allZones.forEach(zone -> {
-                zone.controlLevel();zone.controlOutput();
+                zone.controlLevel();
+                zone.controlOutput();
             });
 
             totalPopulation = 0;
