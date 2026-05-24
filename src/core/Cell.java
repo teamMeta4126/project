@@ -1,3 +1,5 @@
+package core;
+
 public abstract class Cell {
     protected int n;
     protected int m;
