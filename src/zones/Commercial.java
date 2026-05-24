@@ -1,3 +1,5 @@
+package zones;
+
 public class Commercial extends Zone {
 
     public Commercial(int n, int m) {
