@@ -2,6 +2,7 @@ package engine;
 
 import core.Cell;
 import zones.*;
+import core.SE116ConfigurationException;
 
 public class Algorithm3 {
 
