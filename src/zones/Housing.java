@@ -1,3 +1,5 @@
+package zones;
+
 public class Housing extends Zone {
 
     public Housing(int n, int m) {
