@@ -1,3 +1,5 @@
+package services;
+
 public class Hospital extends Service {
     public Hospital(int n, int m) {
         super(n, m);
