@@ -1,3 +1,7 @@
+package utilities;
+
+import core.Cell;
+
 public abstract class UtilityProvider extends Cell{
     protected int capacity;
 
