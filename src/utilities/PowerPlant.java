@@ -1,3 +1,5 @@
+package utilities;
+
 public class PowerPlant extends UtilityProvider{
 
     public PowerPlant(int n,int m){
