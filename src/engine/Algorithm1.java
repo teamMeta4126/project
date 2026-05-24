@@ -1,3 +1,9 @@
+package engine;
+
+import core.Cell;
+import zones.Zone;
+import services.*;
+
 public class Algorithm1 {
     public void provideServices(Cell[][] cityMap){
         int mapRows=cityMap.length;
