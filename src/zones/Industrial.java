@@ -6,44 +6,50 @@ public class Industrial extends Zone{
         super(n,m);
         this.symbol='I';
     }
-    @Override
+   @Override
     public void levelUp() {
         if (level == 0 && getHasElectricity() && getHasWater() && getPopulation() > 0) {
+            int oldLevel=level;
             level = 1;
-            System.out.println(getBuildingName() + " at (" + getRow() + "," + getColumn() + ") levels up from 0 to 1");
+            displayLevelChange(oldLevel,level);
         }
         else if (level == 1 && getHasElectricity() && getHasWater() && getPopulation() > 0 && getHasSecurity()) {
+            int oldLevel=level;
             level = 2;
-            System.out.println(getBuildingName() + " at (" + getRow() + "," + getColumn() + ") levels up from 1 to 2");
+            displayLevelChange(oldLevel,level);
         }
         else if (level == 2 && getHasElectricity() && getHasWater() && getPopulation() > 0 && getHasSecurity()) {
+            int oldLevel=level;
             level = 3;
-            System.out.println(getBuildingName() + " at (" + getRow() + "," + getColumn() + ") levels up from 2 to 3");
+            displayLevelChange(oldLevel,level);
         }
     }
     @Override
     public void levelDown() {
         if (!(getHasElectricity() && getHasWater())) {
             if (level != 0) {
-                System.out.println(getBuildingName() + " at (" + getRow() + "," + getColumn() + ") levels down from " + level + " to 0");
+                int oldLevel=level;
                 level = 0;
+                displayLevelChange(oldLevel,level);
             }
             return;
         }
         if (level == 3 && !(getPopulation() > 0 && getHasSecurity())) {
+            int oldLevel=level;
             level = 2;
-            System.out.println(getBuildingName() + " at (" + getRow() + "," + getColumn() + ") levels down from 3 to 2");
+            displayLevelChange(oldLevel,level);
         }
         else if (level == 2 && !(getPopulation() > 0 && getHasSecurity())) {
+            int oldLevel=level;
             level = 1;
-            System.out.println(getBuildingName() + " at (" + getRow() + "," + getColumn() + ") levels down from 2 to 1");
+            displayLevelChange(oldLevel,level);
         }
         else if (level == 1 && !(getPopulation() > 0)) {
+            int oldLevel=level;
             level = 0;
-            System.out.println(getBuildingName() + " at (" + getRow() + "," + getColumn() + ") levels down from 1 to 0");
+            displayLevelChange(oldLevel,level);
         }
     }
-
         @Override
     public void controlOutput(){
         int m;
