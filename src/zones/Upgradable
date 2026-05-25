@@ -1,0 +1,5 @@
+public interface Upgradable{
+ void controlLevel();
+ void levelUp();
+ void levelDown();
+ }
