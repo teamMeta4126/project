@@ -1,6 +1,7 @@
 package zones;
 
 import core.Cell;
+import core.Upgradable;
 
 public abstract class Zone extends Cell implements Upgradable {
     protected int level;
