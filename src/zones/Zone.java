@@ -2,7 +2,7 @@ package zones;
 
 import core.Cell;
 
-public abstract class Zone extends Cell {
+public abstract class Zone extends Cell implements Upgradable {
     protected int level;
     protected int demand;
     protected int output;
