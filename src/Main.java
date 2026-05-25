@@ -13,13 +13,11 @@ public class Main {
         if(args.length != 2){
             throw new SE116ConfigurationException("ERROR: Missing map file or tick count.");
         }
-
         String fileName = args[0];
         int tickCount;
 
         try{
             tickCount = Integer.parseInt(args[1]);
-
             if(tickCount < 1){
                 throw new SE116ConfigurationException("ERROR: Tick count must be greater than 0.");
             }
@@ -41,61 +39,43 @@ public class Main {
         int totalGoods = 0;
         int totalLifestyle = 0;
 
-        for(int tick = 1; tick <= tickCount; tick++){
+        int rows = cityMap.length;
+        int cols = cityMap[0].length;
 
-            System.out.println("TICK " + tick);
-
-            int rows = cityMap.length;
-            int cols = cityMap[0].length;
-
-            ArrayList<Zone> allZones = new ArrayList<>();
-
-            for(int i = 0; i < rows; i++){
-                for(int j = 0; j < cols; j++){
-
-                    if(cityMap[i][j] instanceof Zone){
-                        allZones.add((Zone) cityMap[i][j]);
-                    }
+        ArrayList<Zone> allZones = new ArrayList<>();
+        for(int i = 0; i < rows; i++){
+            for(int j = 0; j < cols; j++){
+                if(cityMap[i][j] instanceof Zone){
+                    allZones.add((Zone) cityMap[i][j]);
                 }
             }
+        }
 
-            allZones.forEach(zone -> zone.resetForNextTick());
+
+        for(int tick = 1; tick <= tickCount; tick++){
+           System.out.println("TICK " + tick);
 
             algorithm1.provideServices(cityMap);
-
             algorithm2.distributeUtility(cityMap);
-
-            algorithm3.distributeResources(cityMap, totalPopulation, totalGoods, totalLifestyle);
-
-            allZones.forEach(zone -> {
-                zone.controlLevel();
-                zone.controlOutput();
-            });
+            allZones.forEach(zone -> zone.controlLevel());
 
             totalPopulation = 0;
             totalGoods = 0;
             totalLifestyle = 0;
 
-            for(int i = 0; i < rows; i++){
-                for(int j = 0; j < cols; j++){
-
-                    if(cityMap[i][j] instanceof Housing){
-                        Housing housing = (Housing) cityMap[i][j];
-                        totalPopulation += housing.getOutput();
-                    }
-
-                    else if(cityMap[i][j] instanceof Industrial){
-                        Industrial industrial = (Industrial) cityMap[i][j];
-                        totalGoods += industrial.getOutput();
-                    }
-
-                    else if(cityMap[i][j] instanceof Commercial){
-                        Commercial commercial = (Commercial) cityMap[i][j];
-                        totalLifestyle += commercial.getOutput();
-                    }
+            for(Zone zone : allZones){
+                zone.controlOutput();
+                if(zone instanceof Housing){
+                    totalPopulation += zone.getOutput();
+                } else if(zone instanceof Industrial){
+                    totalGoods += zone.getOutput();
+                } else if(zone instanceof Commercial){
+                    totalLifestyle += zone.getOutput();
                 }
             }
-
+            algorithm3.distributeResources(cityMap, totalPopulation, totalGoods, totalLifestyle);
+            allZones.forEach(zone -> zone.resetForNextTick());
+            
             System.out.println();
         }
     }
