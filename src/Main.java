@@ -84,7 +84,6 @@ public class Main {
             
             allZones.forEach(zone-> zone.resetForNextTick());
             
-            System.out.println();
         }
     }
 }
