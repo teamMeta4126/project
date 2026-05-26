@@ -24,7 +24,7 @@ public abstract class Zone extends Cell implements Upgradable {
     public abstract void levelUp();
     public abstract void levelDown();
 
-    protected void displayLevelChange(int oldLevel, int newLevel){
+    public void displayLevelChange(int oldLevel, int newLevel){
         if(oldLevel==newLevel){
             return;
         }
