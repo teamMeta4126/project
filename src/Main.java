@@ -53,7 +53,7 @@ public class Main {
 
 
         for(int tick = 1; tick<=tickCount; tick++){
-           System.out.println("TICK " + tick);
+           System.out.println("Tick "+ tick);
 
             algorithm1.provideServices(cityMap);
             algorithm2.distributeUtility(cityMap);
