@@ -9,46 +9,38 @@ public class Industrial extends Zone{
    @Override
     public void levelUp() {
         if (level == 0 && getHasElectricity() && getHasWater() && getPopulation() > 0) {
-            int oldLevel=level;
-            level = 1;
-            displayLevelChange(oldLevel,level);
+         level = 1;
+          
         }
         else if (level == 1 && getHasElectricity() && getHasWater() && getPopulation() > 0 && getHasSecurity()) {
-            int oldLevel=level;
-            level = 2;
-            displayLevelChange(oldLevel,level);
+         level = 2;
+         
         }
         else if (level == 2 && getHasElectricity() && getHasWater() && getPopulation() > 0 && getHasSecurity()) {
-            int oldLevel=level;
-            level = 3;
-            displayLevelChange(oldLevel,level);
+        level = 3;
+          
         }
     }
     @Override
     public void levelDown() {
         if (!(getHasElectricity() && getHasWater())) {
             if (level != 0) {
-                int oldLevel=level;
-                level = 0;
-                displayLevelChange(oldLevel,level);
+             level = 0;
+              
             }
             return;
         }
         if (level == 3 && !(getPopulation() > 0 && getHasSecurity())) {
-            int oldLevel=level;
-            level = 2;
-            displayLevelChange(oldLevel,level);
+             level = 2;
+            
         }
         else if (level == 2 && !(getPopulation() > 0 && getHasSecurity())) {
-            int oldLevel=level;
-            level = 1;
-            displayLevelChange(oldLevel,level);
+         level = 1;
+           
         }
         else if (level == 1 && !(getPopulation() > 0)) {
-            int oldLevel=level;
-            level = 0;
-            displayLevelChange(oldLevel,level);
-        }
+         level = 0;
+       }
     }
         @Override
     public void controlOutput(){
@@ -70,9 +62,12 @@ public class Industrial extends Zone{
             generatedOutput=(m*2)+getPopulation();
         }
         this.output=generatedOutput;
+
+        printOutput(generatedOutput, "goods");
+
         if(generatedOutput>0){
             this.demand=output;
-            printOutput(generatedOutput, "goods");
+            
         }else{
             this.demand=1;
         }
