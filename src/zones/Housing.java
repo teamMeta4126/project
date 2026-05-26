@@ -9,40 +9,33 @@ public class Housing extends Zone {
    @Override
     public void levelUp() {
         if (level == 0 && getHasElectricity() && getHasWater() && getHasInternet()) {
-            int oldLevel=level;
             level = 1;
-            displayLevelChange(oldLevel,level);
+            
         }
         else if (level == 1 && getHasElectricity() && getHasWater() && getHasInternet() && getHasSecurity() && getHasHealth() && getHasEducation()) {
-            int oldLevel=level;
-            level = 2;
-            displayLevelChange(oldLevel,level);
+         level = 2;
+      
         }
         else if (level == 2 && getHasElectricity() && getHasWater() && getHasInternet() && getHasSecurity() && getHasHealth() && getHasEducation() && getLifestyle() > 0) {
-            int oldLevel=level;
-            level = 3;
-            displayLevelChange(oldLevel,level);
+          level = 3;
+       
         }
     }
     @Override
     public void levelDown() {
         if (!(getHasElectricity() && getHasInternet() && getHasWater())) {
             if(level!=0) {
-                int oldLevel = level;
-                level = 0;
-                displayLevelChange(oldLevel, level);
-            }
+            level = 0;
+        }
             return;
         }
         if (level == 3 && !(getHasSecurity() && getHasHealth() && getHasEducation() && getLifestyle() > 0)) {
-            int oldLevel=level;
-            level = 2;
-            displayLevelChange(oldLevel,level);
+           level = 2;       
+            
         }
         else if (level == 2 && !(getHasSecurity() && getHasHealth() && getHasEducation())) {
-            int oldLevel=level;
             level = 1;
-            displayLevelChange(oldLevel,level);
+  
         }
     }
        @Override
@@ -63,10 +56,12 @@ public class Housing extends Zone {
             generatedOutput=(m*2)+getLifestyle();
         }
        this.output=generatedOutput;
+        printOutput(generatedOutput,"population");
+
+        
         if(generatedOutput>0){
             this.demand=output;
-            printOutput(generatedOutput,"population");
-        }else{
+      }else{
             this.demand=1;
         }
     }
