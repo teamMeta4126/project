@@ -10,17 +10,14 @@ public class Commercial extends Zone {
    @Override
     public void levelUp() {
         if (level == 0 && getHasElectricity() && getHasWater() && getHasInternet() && getPopulation() > 0 && getGoods() > 0) {
-            int oldLevel=level;
-            level = 1;
-            displayLevelChange(oldLevel,level);
+          level = 1;
+      
         } else if (level == 1 && getHasElectricity() && getHasWater() && getHasInternet() && getPopulation() > 0 && getGoods() > 0 && getHasSecurity()) {
-            int oldLevel=level;
-            level = 2;
-            displayLevelChange(oldLevel,level);
+          level = 2;
+    
         } else if (level == 2 && getHasElectricity() && getHasWater() && getHasInternet() && getPopulation() > 0 && getGoods() > 0 && getHasSecurity()) {
-            int oldLevel=level;
-            level = 3;
-            displayLevelChange(oldLevel,level);
+          level = 3;
+          
         }
     }
 
@@ -28,26 +25,22 @@ public class Commercial extends Zone {
     public void levelDown() {
         if (!(getHasElectricity() && getHasInternet() && getHasWater())) {
             if (level != 0) {
-                int oldLevel=level;
-                level = 0;
-                displayLevelChange(oldLevel,level);
+             level = 0;
+                
             }
             return;
         }
         if (level == 3 && !(getPopulation() > 0 && getGoods() > 0 && getHasSecurity())) {
-            int oldLevel=level;
-            level = 2;
-            displayLevelChange(oldLevel,level);
+          level = 2;
+        
         }
         else if (level == 2 && !(getPopulation() > 0 && getGoods() > 0 && getHasSecurity())) {
-            int oldLevel=level;
-            level = 1;
-            displayLevelChange(oldLevel,level);
+          level = 1;
+            
         }
         else if (level == 1 && !(getPopulation() > 0 && getGoods() > 0)) {
-            int oldLevel=level;
-            level = 0;
-            displayLevelChange(oldLevel,level);
+          level = 0;
+          
         }
     }
     @Override
@@ -72,9 +65,11 @@ public class Commercial extends Zone {
             generatedOutput=(m*2)+minResource;
         }
         this.output=generatedOutput;
+        printOutput(generatedOutput,"lifestyle");   
+        
         if(generatedOutput>0){
             this.demand=output;
-            printOutput(generatedOutput,"lifestyle");
+    
         }else{
             this.demand=1;
         }
