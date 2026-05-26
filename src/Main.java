@@ -57,14 +57,22 @@ public class Main {
 
             algorithm1.provideServices(cityMap);
             algorithm2.distributeUtility(cityMap);
-            allZones.forEach(zone -> zone.controlLevel());
+            algorithm3.distributeResources(cityMap, totalPopulation, totalGoods, totalLifestyle);           
 
             totalPopulation = 0;
             totalGoods = 0;
             totalLifestyle = 0;
+        
 
             for(Zone zone: allZones){
+                int oldLevel=zone.getLevel();
+                zone.controlLevel();
+                int newLevel=zone.getLevel();
+                
                 zone.controlOutput();
+                
+                zone.displayLevelChange(oldLevel,newLevel);
+     
                 if(zone instanceof Housing){
                     totalPopulation+= zone.getOutput();
                 } else if(zone instanceof Industrial){
@@ -73,7 +81,7 @@ public class Main {
                     totalLifestyle+= zone.getOutput();
                 }
             }
-            algorithm3.distributeResources(cityMap, totalPopulation, totalGoods, totalLifestyle);
+            
             allZones.forEach(zone-> zone.resetForNextTick());
             
             System.out.println();
