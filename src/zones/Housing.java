@@ -33,7 +33,7 @@ public class Housing extends Zone {
            level = 2;       
             
         }
-        else if (level == 2 && !(getHasSecurity() && getHasHealth() && getHasEducation())) {
+        if (level == 2 && !(getHasSecurity() && getHasHealth() && getHasEducation())) {
             level = 1;
   
         }
