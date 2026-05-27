@@ -30,15 +30,15 @@ public class Commercial extends Zone {
             }
             return;
         }
-        if (level == 3 && !(getPopulation() > 0 && getGoods() > 0 && getHasSecurity())) {
+        if(level == 3 && !(getPopulation() > 0 && getGoods() > 0 && getHasSecurity())){
           level = 2;
         
         }
-        else if (level == 2 && !(getPopulation() > 0 && getGoods() > 0 && getHasSecurity())) {
+        if(level == 2 && !(getPopulation() > 0 && getGoods() > 0 && getHasSecurity())){
           level = 1;
             
         }
-        else if (level == 1 && !(getPopulation() > 0 && getGoods() > 0)) {
+        if(level == 1 && !(getPopulation() > 0 && getGoods() > 0)){
           level = 0;
           
         }
