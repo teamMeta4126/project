@@ -43,7 +43,7 @@ public abstract class Cell {
             case 'E':
                 return "Empty";
             default:
-                throw new SE116ConfigurationException("Invalid cell: " + this.symbol);
+                throw new TeamMeta4126Exception("Invalid cell: " + this.symbol);
         }
     }
 }
