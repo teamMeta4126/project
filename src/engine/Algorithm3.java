@@ -2,7 +2,7 @@ package engine;
 
 import core.Cell;
 import zones.*;
-import core.SE116ConfigurationException;
+import core.TeamMeta4126Exception;
 
 public class Algorithm3 {
 
@@ -12,7 +12,7 @@ public class Algorithm3 {
                                     int totalLifestyle) {
 
         if (cityMap == null || cityMap.length == 0) {
-            throw new SE116ConfigurationException("ERROR: City map is null or empty. Resource distribution cannot proceed.");
+            throw new TeamMeta4126Exception("ERROR: City map is null or empty. Resource distribution cannot proceed.");
         }
 
         int rows = cityMap.length;
