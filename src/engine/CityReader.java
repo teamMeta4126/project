@@ -34,13 +34,14 @@ public class CityReader {
                 }
             }
         } catch (FileNotFoundException e) {
-            throw new SE116ConfigurationException("ERROR: The file ("+ this.fileName+") has not found.",e);
+            throw new teamMeta4126_Exception("ERROR: The file ("+ this.fileName+") has not found.",e);
+        
         } finally {
             if (sc != null) sc.close();
         }
 
         if (lines.isEmpty()) {
-            throw new SE116ConfigurationException("ERROR : file is EMPTY.");
+            throw new teamMeta4126_Exception("ERROR : file is EMPTY.");
         }
 
         int maxColumns=0;
@@ -104,7 +105,7 @@ public class CityReader {
 
                     // other foreign letters
                     default:
-                        throw new SE116ConfigurationException("ERROR: Invalid character: "+ c);
+                        throw new teamMeta4126_Exception ("ERROR: Invalid character: "+ c);
                 }
             }
         }
