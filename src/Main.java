@@ -11,7 +11,7 @@ public class Main {
     public static void main(String[] args) {
 
         if(args.length!=2){
-            throw new SE116ConfigurationException("ERROR: Missing map file or tick count.");
+            throw new teamMeta4126_Exception("ERROR: Missing map file or tick count.");
         }
         String fileName=args[0];
         int tickCount;
@@ -19,11 +19,11 @@ public class Main {
         try{
             tickCount = Integer.parseInt(args[1]);
             if(tickCount<1){
-                throw new SE116ConfigurationException("ERROR: Tick count must be greater than 0.");
+                throw new teamMeta4126_Exception ("ERROR: Tick count must be greater than 0.");
             }
 
         } catch(NumberFormatException e){
-            throw new SE116ConfigurationException("ERROR: Invalid tick count.", e);
+            throw new teamMeta4126_Exception ("ERROR: Invalid tick count.", e);
         }
 
         CityReader cityReader= new CityReader(fileName);
