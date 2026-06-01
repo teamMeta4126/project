@@ -31,7 +31,7 @@ for(int priorityOutput=0;priorityOutput<3;priorityOutput++) {
                 if (priorityOutput == 2 && !(cityMap[i][j] instanceof PowerPlant)) {
                     continue;
                 }
-// Reseting the distributed matrix allows utilities to propagate through already distributed zones (only distributing to the needed zones).
+// Reseting the distributed matrix allows utilities to spread through already distributed zones (only distributing to the needed zones).
                 boolean[][] distributed = new boolean[rows][columns];
                 Queue<Cell> cellQueue = new LinkedList<>();
 
