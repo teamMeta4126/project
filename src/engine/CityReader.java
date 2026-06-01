@@ -34,7 +34,7 @@ public class CityReader {
                 }
             }
         } catch (FileNotFoundException e) {
-            throw new TeamMeta4126Exception("ERROR: The file ("+ this.fileName+") has not found.",e);
+            throw new TeamMeta4126Exception("ERROR: The file ("+ this.fileName+") is not found.",e);
         
         } finally {
             if (sc != null) sc.close();
