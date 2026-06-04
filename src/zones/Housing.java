@@ -29,11 +29,11 @@ public class Housing extends Zone {
         }
             return;
         }
-        if (level == 3 && !(getHasSecurity() && getHasHealth() && getHasEducation() && getLifestyle() > 0)) {
+        else if (level == 3 && !(getHasSecurity() && getHasHealth() && getHasEducation() && getLifestyle() > 0)) {
            level = 2;       
             
         }
-        if (level == 2 && !(getHasSecurity() && getHasHealth() && getHasEducation())) {
+       else if (level == 2 && !(getHasSecurity() && getHasHealth() && getHasEducation())) {
             level = 1;
   
         }
