@@ -34,11 +34,11 @@ public class Industrial extends Zone{
              level = 2;
             
         }
-        if (level == 2 && !(getPopulation() > 0 && getHasSecurity())) {
+       else if (level == 2 && !(getPopulation() > 0 && getHasSecurity())) {
          level = 1;
            
         }
-        if (level == 1 && !(getPopulation() > 0)) {
+       else if (level == 1 && !(getPopulation() > 0)) {
          level = 0;
        }
     }
